@@ -1,0 +1,39 @@
+Zunächst geben wir die Programmsignatur an.
+
+Σ = (S,F)
+
+S={Int, IntSet, Bool}
+
+F={
+empty :: IntSet
+isEmpty :: IntSet -> Bool
+member :: Int -> IntSet -> Bool
+insert :: Int -> IntSet -> IntSet
+union :: IntSet -> IntSet -> IntSet
+a)
+-->> delete :: Int -> IntSet -> IntSet
+-->> intersect :: IntSet -> IntSet -> IntSet
+-->> size :: IntSet -> Int
+}
+Dann definieren wir die Variablenmenge X.
+
+X={s1 :: IntSet, s2 :: IntSet, x :: Int, y :: Int}
+
+Und schließlich geben wir die Gleichungsmenge an, wobei wir etwaige Vorbedingungen explizit notieren.
+
+E={
+isEmpty empty = True
+member x empty = False
+isEmpty (insert x s1) = False
+member x (insert x s1) = True
+member y (insert x s1) = member y s1, falls x /= y
+isEmpty (union s1 s2) = isEmpty s1 && isEmpty s2
+member x s1 || member x s2 = member x (union s1 s2)
+b)
+delete x $ insert x xs = xs
+delete x Empty = Empty
+intersetct Empty ys = Empty
+intersect xs Empty = Empty
+size Empty = 0
+size insert x xs = xs + 1
+}
